@@ -46,11 +46,11 @@ pipeline {
                 stage('Salesforce') {
                     when { changeset "src/*" }
                     steps {
-                        sh 'ant -buildfile build/build.xml checkAndTest -Dsfdc.username=${CI_ENVIRONMENT_USR} -Dsfdc.password=${CI_ENVIRONMENT_PSW} -Dsfdc.serverurl=${CI_ENVIRONMENT_URL}'
+                        sh 'ant -buildfile /build/build.xml checkAndTest -Dbasedir=${WORKSPACE} -Dsfdc.username=${CI_ENVIRONMENT_USR} -Dsfdc.password=${CI_ENVIRONMENT_PSW} -Dsfdc.serverurl=${CI_ENVIRONMENT_URL}'
                     }
                     post {
                         always {
-                            junit 'build/testreports/*.xml'
+                            junit 'testreports/*.xml'
                         }
                     }                    
                 }

@@ -1,18 +1,18 @@
-<project name="Retrieve and Deploy SFDC metadata" default="deployEmptyCheckOnly" basedir=".." xmlns:sf="antlib:com.salesforce">
+<project name="Retrieve and Deploy SFDC metadata" default="deployEmptyCheckOnly" xmlns:sf="antlib:com.salesforce">
 
     <path id="ant.additions.classpath">
-        <fileset dir="${basedir}/build/lib"/>
+        <fileset dir="/build/lib"/>
     </path>
 
     <taskdef uri="antlib:com.salesforce"
         resource="com/salesforce/antlib.xml"
-        classpath="${basedir}/build/lib/ant-salesforce.jar"/>
+        classpath="/build/lib/ant-salesforce.jar"/>
 
     <taskdef name="sfdeploy"
         classname="com.salesforce.ant.DeployWithXmlReportTask"
         classpathref="ant.additions.classpath"/>
 
-    <property file="${basedir}/build/build.properties"/>
+    <property file="/build/build.properties"/>
     <property environment="env"/>
 
     <!-- Deploys the code to Salesforce without running the unit tests -->
@@ -30,7 +30,7 @@
     <!-- Simmulates a deployment and runs all tests as part of the deployment similiar to a producing deployment but does not presist the deployment -->
     <target name="checkAndTest">
       <echo level="info">Testing the deploy and running all local unit tests</echo>
-      <delete dir="${basedir}/build/testreports" quiet="true"/>
+      <delete dir="${basedir}/testreports" quiet="true"/>
       <sfdeploy
           checkOnly="true"
           logType="Debugonly"
@@ -41,7 +41,7 @@
           pollWaitMillis="${sfdc.pollWaitMillis}"
           maxPoll="${sfdc.maxPoll}"
           testLevel="RunLocalTests"
-          junitreportdir="${basedir}/build/testreports">
+          junitreportdir="${basedir}/testreports">
        </sfdeploy>
     </target>
 
