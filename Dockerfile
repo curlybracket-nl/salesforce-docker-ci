@@ -37,4 +37,8 @@ RUN curl -SL https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/son
     && ln -sf /sonar-scanner/bin/sonar-scanner-debug /usr/bin/sonar-scanner-debug \
     && rm -rf sonar.zip
 
+# Setup entry point to use umask 0000 and run bash
+COPY ./docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
 # EOF
