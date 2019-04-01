@@ -10,7 +10,8 @@ RUN apk --no-cache add \
     nodejs \
     curl \ 
     wget \
-	unzip \
+    unzip \
+    nss \
     && apk add apache-ant --no-cache --update-cache \
     --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ \
     --allow-untrusted
@@ -28,7 +29,7 @@ RUN mkdir -p /sfdx \
     && ln -sf /usr/bin/node /sfdx/bin/node \
     && /sfdx/install \
     && rm -rf /sfdx
-	
+
 # Download Sonarscanner
 RUN curl -SL https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492.zip -o sonar.zip \
     && unzip sonar.zip \
