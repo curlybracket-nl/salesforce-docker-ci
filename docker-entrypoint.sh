@@ -1,3 +1,8 @@
 #!/bin/bash
 umask 0000
-/bin/bash
+
+if [[ $# -eq 0 ]] ; then
+    exec /bin/bash
+else
+    exec "$@"
+fi
