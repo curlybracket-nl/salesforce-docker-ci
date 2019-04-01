@@ -8,6 +8,7 @@ RUN apk --no-cache add \
     git \
     openjdk8 \
     nodejs \
+    npm \
     curl \ 
     wget \
     unzip \
