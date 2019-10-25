@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.10.3
 MAINTAINER Peter van Gulik <peter@curlybracket.nl>
 
 # Add packages
