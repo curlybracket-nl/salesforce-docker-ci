@@ -1,16 +1,17 @@
 # Simple docker CI container for Salesforce
-Simple CI container that can be used in a CI/CD servers such as Jenkins to automate the deployment and test for Salesforce. 
+Simple CI container that can be used in a CI/CD servers such as Jenkins to automate the deployment and test for Salesforce. Includes SonarScanner to have a single image to build, validate and test your Salesforce project.
 
 > This images includes NodeJS and SFDX which can be used for the automation of mundane tasks on the Salesforce dpeloyment target
 
 ## Components
-This image is based of Alpine linux 3.7 and includes the following components:
+This image is based of Alpine linux 3.13 and includes the following components:
  * SFDX
  * Apache Ant
  * Java (OpenJDK 8)
  * NodeJS
  * Bash
  * Git
+ * SonarQube Scanner
 
 The container comes with an Ant `build.xml` file and a modified version of the `ant-salesforce.jar` which outputs JUnit compatible test results for easy integration into your build pipeline. Test results are written to the `testreports` folder relative to the base folder from which the ant deploy is executed.
 
